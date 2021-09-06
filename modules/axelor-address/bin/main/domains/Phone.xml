@@ -8,9 +8,9 @@
 	<module name="studentmodule" package="com.axelor.student.db" />
 
 	<entity name="StdPhone" sequential="true" cacheable="true">
-		<integer name="phone_no" required="true" />
+		<integer name="phoneno" required="true" />
 
-	<one-to-one name="student" ref="Student" mappedBy="stdPh" />
+ 	<one-to-one name="student" ref="Student" mappedBy="stdPh" /> 
 
 	</entity>
 </domain-models>

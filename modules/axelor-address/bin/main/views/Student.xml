@@ -8,19 +8,41 @@
 	<grid name="student-grid" title="Student"
 		model="com.axelor.student.db.Student">
 		<field name="stdName" />
-		<field name="stdPh" canNew="true"/>
-		<field name="stdAdds" canNew="true"/>
+		<field name="stdPh" canNew="true" />
+		<field name="stdAdds" canNew="true" />
 		<field name="stdDept" canNew="true" />
 		<field name="stdSub" canNew="true" />
 	</grid>
-	<form model="com.axelor.student.db.Student" title="Students" name="student-form">
-	<panel title="StudentView">
-	<field name="stdName" ></field>
-	<field name="stdPh" canNew="true"></field>
-	<field name="stdAdds" colSpan="4"></field>
-	<field name="stdDept" colSpan="4" canNew="true"></field>
-	<field name="stdSub"  colSpan="4"></field>
-	</panel>
+
+	<form model="com.axelor.student.db.StdPhone" title="Phone"
+		name="student-phone-form">
+		<field name="phoneno"></field>
+	</form>
+
+	<!-- <grid model="com.axelor.student.db.StdPhone" title="Phones" name="student-phone-grid"> 
+		<field name="phoneno"></field> </grid> -->
+
+	<!-- grid-view="student-phone-grid" -->
+
+	<form model="com.axelor.student.db.StdDepartment"
+		title="Department" name="student-department-form">
+		<field name="stdDeptName"></field>
+	</form>
+
+	<!-- <form model="com.axelor.student.db.StdAddress" title="Address"
+		name="student-address-form">
+		<field name="stdaddr"></field>
+	</form> -->
+
+	<form model="com.axelor.student.db.Student" title="Students"
+		name="student-form">
+		<panel title="StudentView">
+			<field name="stdName" colSpan="4"></field>
+			<field name="stdPh" canNew="true" colSpan="4" form-view="student-phone-form"></field>
+			<field name="stdDept" colSpan="4" canNew="true" form-view="student-department-form"></field>
+			<field name="stdAdds" colSpan="12" ></field>
+			<field name="stdSub" colSpan="12"></field>
+		</panel>
 	</form>
 
 </object-views>

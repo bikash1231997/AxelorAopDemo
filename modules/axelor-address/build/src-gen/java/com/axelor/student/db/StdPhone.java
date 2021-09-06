@@ -32,7 +32,7 @@ public class StdPhone extends AuditableModel {
 	private Long id;
 
 	@NotNull
-	private Integer phone_no = 0;
+	private Integer phoneno = 0;
 
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "stdPh", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private Student student;
@@ -55,12 +55,12 @@ public class StdPhone extends AuditableModel {
 		this.id = id;
 	}
 
-	public Integer getPhone_no() {
-		return phone_no == null ? 0 : phone_no;
+	public Integer getPhoneno() {
+		return phoneno == null ? 0 : phoneno;
 	}
 
-	public void setPhone_no(Integer phone_no) {
-		this.phone_no = phone_no;
+	public void setPhoneno(Integer phoneno) {
+		this.phoneno = phoneno;
 	}
 
 	public Student getStudent() {
@@ -108,7 +108,7 @@ public class StdPhone extends AuditableModel {
 	public String toString() {
 		return MoreObjects.toStringHelper(this)
 			.add("id", getId())
-			.add("phone_no", getPhone_no())
+			.add("phoneno", getPhoneno())
 			.omitNullValues()
 			.toString();
 	}
