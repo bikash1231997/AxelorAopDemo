@@ -1,7 +1,5 @@
 package com.axelor.student.db;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Basic;
@@ -12,7 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -34,10 +32,10 @@ public class StdPhone extends AuditableModel {
 	private Long id;
 
 	@NotNull
-	private Long phone_no = 0L;
+	private Integer phone_no = 0;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "stdPh", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Student> student;
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "stdPh", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	private Student student;
 
 	@Widget(title = "Attributes")
 	@Basic(fetch = FetchType.LAZY)
@@ -57,66 +55,26 @@ public class StdPhone extends AuditableModel {
 		this.id = id;
 	}
 
-	public Long getPhone_no() {
-		return phone_no == null ? 0L : phone_no;
+	public Integer getPhone_no() {
+		return phone_no == null ? 0 : phone_no;
 	}
 
-	public void setPhone_no(Long phone_no) {
+	public void setPhone_no(Integer phone_no) {
 		this.phone_no = phone_no;
 	}
 
-	public List<Student> getStudent() {
+	public Student getStudent() {
 		return student;
 	}
 
-	public void setStudent(List<Student> student) {
-		this.student = student;
-	}
-
-	/**
-	 * Add the given {@link Student} item to the {@code student}.
-	 *
-	 * <p>
-	 * It sets {@code item.stdPh = this} to ensure the proper relationship.
-	 * </p>
-	 *
-	 * @param item
-	 *            the item to add
-	 */
-	public void addStudent(Student item) {
-		if (getStudent() == null) {
-			setStudent(new ArrayList<>());
-		}
-		getStudent().add(item);
-		item.setStdPh(this);
-	}
-
-	/**
-	 * Remove the given {@link Student} item from the {@code student}.
-	 *
- 	 * @param item
-	 *            the item to remove
-	 */
-	public void removeStudent(Student item) {
-		if (getStudent() == null) {
-			return;
-		}
-		getStudent().remove(item);
-	}
-
-	/**
-	 * Clear the {@code student} collection.
-	 *
-	 * <p>
-	 * If you have to query {@link Student} records in same transaction, make
-	 * sure to call {@link javax.persistence.EntityManager#flush() } to avoid
-	 * unexpected errors.
-	 * </p>
-	 */
-	public void clearStudent() {
+	public void setStudent(Student student) {
 		if (getStudent() != null) {
-			getStudent().clear();
+			getStudent().setStdPh(null);
 		}
+		if (student != null) {
+			student.setStdPh(this);
+		}
+		this.student = student;
 	}
 
 	public String getAttrs() {

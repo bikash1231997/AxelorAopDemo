@@ -8,10 +8,10 @@
 	<grid name="student-grid" title="Student"
 		model="com.axelor.student.db.Student">
 		<field name="stdName" />
-		<field name="stdPh" />
-		<field name="stdAdds" />
-		<field name="stdDept" />
-		<field name="stdSub" />
+		<field name="stdPh" canNew="true"/>
+		<field name="stdAdds" canNew="true"/>
+		<field name="stdDept" canNew="true" />
+		<field name="stdSub" canNew="true" />
 	</grid>
 	<form model="com.axelor.student.db.Student" title="Students" name="student-form">
 	<panel title="StudentView">

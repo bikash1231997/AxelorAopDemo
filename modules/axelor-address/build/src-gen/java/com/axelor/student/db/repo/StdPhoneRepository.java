@@ -9,5 +9,13 @@ public class StdPhoneRepository extends JpaRepository<StdPhone> {
 		super(StdPhone.class);
 	}
 
+	@Override
+	public void remove(StdPhone entity) {
+		if (entity.getStudent() != null) {
+			entity.getStudent().setStdPh(null);
+		}
+		super.remove(entity);
+	}
+
 }
 

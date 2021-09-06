@@ -1,2 +1,6 @@
 com.axelor.address.db
 com.axelor.address.db.repo
+com.axelor.employee.db
+com.axelor.employee.db.repo
+com.axelor.student.db
+com.axelor.student.db.repo
