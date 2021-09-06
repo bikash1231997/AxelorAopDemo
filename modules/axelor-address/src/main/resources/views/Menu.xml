@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+
+	<menuitem name="menu-address-Address" title="Address item" />
+
+	<menuitem name="menu-address-sub-Contact"
+		parent="menu-address-Address" title="Add Address"
+		action="Address View" />
+
+	<action-view name="Address View" title="Add Address"
+		model="com.axelor.address.db.Address">
+		<view type="form" name="address-form-popup" />
+	</action-view>
+
+	<menuitem name="menu-std-Student" title="Student" />
+
+	<menuitem name="menu-std-sub-Student"
+		parent="menu-std-Student" title="Student-All-Relationship"
+		action="Student View" />
+
+	<action-view name="Student View" title="All Student"
+		model="com.axelor.student.db.Student">
+		<view type="form" name="student-form" />
+		<view type="grid" name="student-grid" />
+	</action-view>
+
+</object-views>

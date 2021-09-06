@@ -1,0 +1,3 @@
+rootProject.name = 'AopProject'
+
+include "modules:axelor-address"
