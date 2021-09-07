@@ -4,13 +4,11 @@ import java.util.Objects;
 
 import javax.persistence.Basic;
 import javax.persistence.Cacheable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -33,9 +31,6 @@ public class StdPhone extends AuditableModel {
 
 	@NotNull
 	private Integer phoneno = 0;
-
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "stdPh", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	private Student phonenumber;
 
 	@Widget(title = "Attributes")
 	@Basic(fetch = FetchType.LAZY)
@@ -61,20 +56,6 @@ public class StdPhone extends AuditableModel {
 
 	public void setPhoneno(Integer phoneno) {
 		this.phoneno = phoneno;
-	}
-
-	public Student getPhonenumber() {
-		return phonenumber;
-	}
-
-	public void setPhonenumber(Student phonenumber) {
-		if (getPhonenumber() != null) {
-			getPhonenumber().setStdPh(null);
-		}
-		if (phonenumber != null) {
-			phonenumber.setStdPh(this);
-		}
-		this.phonenumber = phonenumber;
 	}
 
 	public String getAttrs() {

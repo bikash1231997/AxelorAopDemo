@@ -13,28 +13,28 @@
 	<grid name="student-grid" title="Student"
 		model="com.axelor.student.db.Student">
 		<field name="stdName" />
-		<field name="stdPh" canNew="true" />
-		<field name="stdAdds" canNew="true" />
-		<field name="stdDept" canNew="true" />
-		<field name="stdSub" canNew="true" />
+		<field name="stdPh" />
+		<field name="stdAdds" />
+		<field name="stdDept" />
+		<field name="stdSub" />
 	</grid>
 
 	<form model="com.axelor.student.db.StdPhone" title="Phone"
 		name="student-phone-form">
 		<field name="phoneno"></field>
-		<field name="phonenumber"></field>
+		<!-- <field name="phonenumber"></field> -->
 	</form>
 
-	<!-- <grid model="com.axelor.student.db.StdPhone" title="Phones" name="student-phone-grid"> 
-		<field name="phoneno"></field> </grid> -->
-
-	<!-- grid-view="student-phone-grid" -->
 
 	<form model="com.axelor.student.db.StdDepartment"
 		title="Department" name="student-department-form">
 		<field name="stdDeptName"></field>
 	</form>
 
+	<!-- <grid model="com.axelor.student.db.StdPhone" title="Phones" name="student-phone-grid"> 
+		<field name="phoneno"></field> </grid> -->
+
+	<!-- grid-view="student-phone-grid" -->
 	<!-- <form model="com.axelor.student.db.StdAddress" title="Address"
 		name="student-address-form">
 		<field name="stdaddr"></field>
