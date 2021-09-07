@@ -4,14 +4,11 @@ import java.util.Objects;
 
 import javax.persistence.Basic;
 import javax.persistence.Cacheable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Index;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -25,17 +22,13 @@ import com.google.common.base.MoreObjects;
 
 @Entity
 @Cacheable
-@Table(name = "ADDRESS_ADDRESS", indexes = { @Index(columnList = "contact") })
+@Table(name = "ADDRESS_ADDRESS")
 public class Address extends AuditableModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ADDRESS_ADDRESS_SEQ")
 	@SequenceGenerator(name = "ADDRESS_ADDRESS_SEQ", sequenceName = "ADDRESS_ADDRESS_SEQ", allocationSize = 1)
 	private Long id;
-
-	@NotNull
-	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	private Contact contact;
 
 	@NotNull
 	@Size(max = 255)
@@ -68,14 +61,6 @@ public class Address extends AuditableModel {
 	@Override
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Contact getContact() {
-		return contact;
-	}
-
-	public void setContact(Contact contact) {
-		this.contact = contact;
 	}
 
 	public String getStreet() {

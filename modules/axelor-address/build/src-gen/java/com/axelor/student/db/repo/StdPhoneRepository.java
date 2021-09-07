@@ -11,8 +11,8 @@ public class StdPhoneRepository extends JpaRepository<StdPhone> {
 
 	@Override
 	public void remove(StdPhone entity) {
-		if (entity.getStudent() != null) {
-			entity.getStudent().setStdPh(null);
+		if (entity.getPhonenumber() != null) {
+			entity.getPhonenumber().setStdPh(null);
 		}
 		super.remove(entity);
 	}

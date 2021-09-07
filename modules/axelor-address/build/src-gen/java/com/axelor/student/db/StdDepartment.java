@@ -1,18 +1,14 @@
 package com.axelor.student.db;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Basic;
 import javax.persistence.Cacheable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -38,9 +34,6 @@ public class StdDepartment extends AuditableModel {
 	@Size(max = 255)
 	private String stdDeptName;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "stdDept", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Student> stdDepts;
-
 	@Widget(title = "Attributes")
 	@Basic(fetch = FetchType.LAZY)
 	@Type(type = "json")
@@ -65,60 +58,6 @@ public class StdDepartment extends AuditableModel {
 
 	public void setStdDeptName(String stdDeptName) {
 		this.stdDeptName = stdDeptName;
-	}
-
-	public List<Student> getStdDepts() {
-		return stdDepts;
-	}
-
-	public void setStdDepts(List<Student> stdDepts) {
-		this.stdDepts = stdDepts;
-	}
-
-	/**
-	 * Add the given {@link Student} item to the {@code stdDepts}.
-	 *
-	 * <p>
-	 * It sets {@code item.stdDept = this} to ensure the proper relationship.
-	 * </p>
-	 *
-	 * @param item
-	 *            the item to add
-	 */
-	public void addStdDept(Student item) {
-		if (getStdDepts() == null) {
-			setStdDepts(new ArrayList<>());
-		}
-		getStdDepts().add(item);
-		item.setStdDept(this);
-	}
-
-	/**
-	 * Remove the given {@link Student} item from the {@code stdDepts}.
-	 *
- 	 * @param item
-	 *            the item to remove
-	 */
-	public void removeStdDept(Student item) {
-		if (getStdDepts() == null) {
-			return;
-		}
-		getStdDepts().remove(item);
-	}
-
-	/**
-	 * Clear the {@code stdDepts} collection.
-	 *
-	 * <p>
-	 * If you have to query {@link Student} records in same transaction, make
-	 * sure to call {@link javax.persistence.EntityManager#flush() } to avoid
-	 * unexpected errors.
-	 * </p>
-	 */
-	public void clearStdDepts() {
-		if (getStdDepts() != null) {
-			getStdDepts().clear();
-		}
 	}
 
 	public String getAttrs() {

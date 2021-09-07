@@ -13,6 +13,7 @@
 	<action-view name="Address View" title="Add Address"
 		model="com.axelor.address.db.Address">
 		<view type="form" name="address-form-popup" />
+		<view type="grid" name="address-grid-popup" />
 	</action-view>
 
 	<menuitem name="menu-std-Student" title="Student" />

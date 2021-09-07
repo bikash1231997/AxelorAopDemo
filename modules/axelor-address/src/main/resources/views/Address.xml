@@ -5,7 +5,7 @@
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
 
 
-  <form name="address-form-popup" title="Address"
+  <form name="address-form-popup" title="AddressForm"
     model="com.axelor.address.db.Address">
     <panel title="Overview">
       <field name="street" />
@@ -16,5 +16,13 @@
       <field name="country" />
     </panel>
   </form>
+  <grid model="com.axelor.address.db.Address" title="AddressGrid" name="address-grid-popup">
+      <field name="street" />
+      <field name="area" />
+      <field name="city" />
+      <field name="zip" />
+      <field name="state" />
+      <field name="country" />
+    </grid>
 
 </object-views>

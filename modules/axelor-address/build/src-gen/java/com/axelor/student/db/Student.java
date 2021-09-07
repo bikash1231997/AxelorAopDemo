@@ -1,5 +1,6 @@
 package com.axelor.student.db;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -56,6 +57,11 @@ public class Student extends AuditableModel {
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private Set<StdSubject> stdSub;
+
+	private LocalDate joinDate;
+
+	@Widget(selection = "student.result.type")
+	private Integer result = 0;
 
 	@Widget(title = "Attributes")
 	@Basic(fetch = FetchType.LAZY)
@@ -197,6 +203,22 @@ public class Student extends AuditableModel {
 		}
 	}
 
+	public LocalDate getJoinDate() {
+		return joinDate;
+	}
+
+	public void setJoinDate(LocalDate joinDate) {
+		this.joinDate = joinDate;
+	}
+
+	public Integer getResult() {
+		return result == null ? 0 : result;
+	}
+
+	public void setResult(Integer result) {
+		this.result = result;
+	}
+
 	public String getAttrs() {
 		return attrs;
 	}
@@ -229,6 +251,8 @@ public class Student extends AuditableModel {
 		return MoreObjects.toStringHelper(this)
 			.add("id", getId())
 			.add("stdName", getStdName())
+			.add("joinDate", getJoinDate())
+			.add("result", getResult())
 			.omitNullValues()
 			.toString();
 	}

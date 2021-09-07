@@ -14,6 +14,8 @@
 		<one-to-many ref="StdAddress" name="stdAdds" mappedBy="stdAdd"/>
 		<many-to-one ref="StdDepartment" name="stdDept"></many-to-one>
 		<many-to-many ref="StdSubject" name="stdSub" />
+		<date name="joinDate"></date>
+		<integer name="result" default="0" selection="student.result.type"/>
 	</entity>
 
 </domain-models>

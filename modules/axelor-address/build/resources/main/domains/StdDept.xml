@@ -10,7 +10,7 @@
 	<entity name="StdDepartment" cacheable="true">
 
 		<string name="stdDeptName" required="true" max="255" />
-		<one-to-many ref="Student" name="stdDepts" mappedBy="stdDept"/>
+<!-- 		<one-to-many ref="Student" name="stdDepts" mappedBy="stdDept"/> -->
 	</entity>
 
 </domain-models>

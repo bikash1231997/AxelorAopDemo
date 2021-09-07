@@ -1,13 +1,10 @@
 package com.axelor.address.db;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Basic;
 import javax.persistence.Cacheable;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,7 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -61,9 +57,6 @@ public class Contact extends AuditableModel {
 	@Basic(fetch = FetchType.LAZY)
 	@Type(type = "text")
 	private String notes;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "contact", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Address> addresses;
 
 	@Widget(title = "Attributes")
 	@Basic(fetch = FetchType.LAZY)
@@ -129,60 +122,6 @@ public class Contact extends AuditableModel {
 
 	public void setNotes(String notes) {
 		this.notes = notes;
-	}
-
-	public List<Address> getAddresses() {
-		return addresses;
-	}
-
-	public void setAddresses(List<Address> addresses) {
-		this.addresses = addresses;
-	}
-
-	/**
-	 * Add the given {@link Address} item to the {@code addresses}.
-	 *
-	 * <p>
-	 * It sets {@code item.contact = this} to ensure the proper relationship.
-	 * </p>
-	 *
-	 * @param item
-	 *            the item to add
-	 */
-	public void addAddress(Address item) {
-		if (getAddresses() == null) {
-			setAddresses(new ArrayList<>());
-		}
-		getAddresses().add(item);
-		item.setContact(this);
-	}
-
-	/**
-	 * Remove the given {@link Address} item from the {@code addresses}.
-	 *
- 	 * @param item
-	 *            the item to remove
-	 */
-	public void removeAddress(Address item) {
-		if (getAddresses() == null) {
-			return;
-		}
-		getAddresses().remove(item);
-	}
-
-	/**
-	 * Clear the {@code addresses} collection.
-	 *
-	 * <p>
-	 * If you have to query {@link Address} records in same transaction, make
-	 * sure to call {@link javax.persistence.EntityManager#flush() } to avoid
-	 * unexpected errors.
-	 * </p>
-	 */
-	public void clearAddresses() {
-		if (getAddresses() != null) {
-			getAddresses().clear();
-		}
 	}
 
 	public String getAttrs() {

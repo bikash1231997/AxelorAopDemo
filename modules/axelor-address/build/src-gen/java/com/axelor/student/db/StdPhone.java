@@ -35,7 +35,7 @@ public class StdPhone extends AuditableModel {
 	private Integer phoneno = 0;
 
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "stdPh", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	private Student student;
+	private Student phonenumber;
 
 	@Widget(title = "Attributes")
 	@Basic(fetch = FetchType.LAZY)
@@ -63,18 +63,18 @@ public class StdPhone extends AuditableModel {
 		this.phoneno = phoneno;
 	}
 
-	public Student getStudent() {
-		return student;
+	public Student getPhonenumber() {
+		return phonenumber;
 	}
 
-	public void setStudent(Student student) {
-		if (getStudent() != null) {
-			getStudent().setStdPh(null);
+	public void setPhonenumber(Student phonenumber) {
+		if (getPhonenumber() != null) {
+			getPhonenumber().setStdPh(null);
 		}
-		if (student != null) {
-			student.setStdPh(this);
+		if (phonenumber != null) {
+			phonenumber.setStdPh(this);
 		}
-		this.student = student;
+		this.phonenumber = phonenumber;
 	}
 
 	public String getAttrs() {

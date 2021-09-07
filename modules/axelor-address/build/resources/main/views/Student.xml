@@ -3,7 +3,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
-
+	
+	<selection name="student.result.type">
+		<option value="0">Pending</option>
+		<option value="1">Pass</option>
+		<option value="2">Fail</option>
+	</selection>
 
 	<grid name="student-grid" title="Student"
 		model="com.axelor.student.db.Student">
@@ -17,6 +22,7 @@
 	<form model="com.axelor.student.db.StdPhone" title="Phone"
 		name="student-phone-form">
 		<field name="phoneno"></field>
+		<field name="phonenumber"></field>
 	</form>
 
 	<!-- <grid model="com.axelor.student.db.StdPhone" title="Phones" name="student-phone-grid"> 
@@ -29,19 +35,21 @@
 		<field name="stdDeptName"></field>
 	</form>
 
-	<form model="com.axelor.student.db.StdAddress" title="Address"
+	<!-- <form model="com.axelor.student.db.StdAddress" title="Address"
 		name="student-address-form">
 		<field name="stdaddr"></field>
-	</form>
+	</form> -->
 
 	<form model="com.axelor.student.db.Student" title="Students"
 		name="student-form">
 		<panel title="StudentView">
-			<field name="stdName" colSpan="4"></field>
-			<field name="stdPh" canNew="true" colSpan="4" form-view="student-phone-form"></field>
-			<field name="stdDept" colSpan="4" canNew="true" form-view="student-department-form"></field>
-			<field name="stdAdds" colSpan="12" form-view="student-address-form"></field>
-			<field name="stdSub" colSpan="12"></field>
+			<field name="stdName" title="Student Name" colSpan="4"></field>
+			<field name="stdPh" canNew="true" title="Phone Number" colSpan="4" form-view="student-phone-form"></field>
+			<field name="stdDept" colSpan="4" title="Department" canNew="true" form-view="student-department-form"></field>
+			<field name="stdAdds" title="Address" colSpan="12" ></field>
+			<field name="stdSub" title="Subject" colSpan="12"></field>
+			<field name="joinDate" title="Joining Date"></field>
+			<field name="result" title="Result"></field>
 		</panel>
 	</form>
 
