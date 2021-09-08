@@ -64,12 +64,12 @@
 		<field name="endDate" title=" Leave Date" />
 		<field name="priority" title=" Priority " />
 		<template><![CDATA[
-		  <div class="span4 card-image">
-		    <strong>{{name}}</strong>
-		  </div>
-		    <div class="card-footer">
-		     <i class='fa fa-free-code-camp'></i>
-		  </div>
+	  <div class="span4 card-image">
+	    <strong>{{name}}</strong>
+	  </div>
+	    <div class="card-footer">
+	     <i class='fa fa-free-code-camp'></i>
+	  </div>
   ]]></template>
 	</cards>
 
