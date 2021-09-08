@@ -14,6 +14,8 @@
 		model="com.axelor.address.db.Address">
 		<view type="form" name="address-form-popup" />
 		<view type="grid" name="address-grid-popup" />
+		<view type="cards" name="address-cards"/>
+		<view type="kanban" name="address-task-kanban"/>
 	</action-view>
 
 	<menuitem name="menu-std-Student" title="Student" />

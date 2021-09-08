@@ -10,7 +10,7 @@
 		<option value="2">Fail</option>
 	</selection>
 
-	<grid name="student-grid" title="Student"
+	<grid name="student-grid" editable="true" title="Student"
 		model="com.axelor.student.db.Student">
 		<field name="stdName" />
 		<field name="stdPh" />
@@ -31,20 +31,12 @@
 		<field name="stdDeptName"></field>
 	</form>
 
-	<!-- <grid model="com.axelor.student.db.StdPhone" title="Phones" name="student-phone-grid"> 
-		<field name="phoneno"></field> </grid> -->
-
-	<!-- grid-view="student-phone-grid" -->
-	<!-- <form model="com.axelor.student.db.StdAddress" title="Address"
-		name="student-address-form">
-		<field name="stdaddr"></field>
-	</form> -->
-
 	<form model="com.axelor.student.db.Student" title="Students"
 		name="student-form">
 		<panel title="StudentView">
 			<field name="stdName" title="Student Name" colSpan="4"></field>
 			<field name="stdPh" canNew="true" title="Phone Number" colSpan="4" form-view="student-phone-form"></field>
+			<!-- <panel-related field="stdPh" form-view="student-phone-form" colSpan="4"></panel-related> -->
 			<field name="stdDept" colSpan="4" title="Department" canNew="true" form-view="student-department-form"></field>
 			<field name="stdAdds" title="Address" colSpan="12" ></field>
 			<field name="stdSub" title="Subject" colSpan="12"></field>

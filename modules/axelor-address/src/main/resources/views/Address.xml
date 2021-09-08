@@ -1,28 +1,115 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <object-views xmlns="http://axelor.com/xml/ns/object-views"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
 
+	<calendar name="address-calendar-popups"
+		title="AddressCalender" model="com.axelor.address.db.Address"
+		colorBy="project" eventStart="startDate" eventStop="endDate"
+		eventLength="1">
+		<field name="name" />
+	</calendar>
 
-  <form name="address-form-popup" title="AddressForm"
-    model="com.axelor.address.db.Address">
-    <panel title="Overview">
-      <field name="street" />
-      <field name="area" />
-      <field name="city" />
-      <field name="zip" />
-      <field name="state" />
-      <field name="country" />
-    </panel>
-  </form>
-  <grid model="com.axelor.address.db.Address" title="AddressGrid" name="address-grid-popup">
-      <field name="street" />
-      <field name="area" />
-      <field name="city" />
-      <field name="zip" />
-      <field name="state" />
-      <field name="country" />
-    </grid>
+	<!-- <form name="contact-form-popups" title="ContactForm" model="com.axelor.address.db.Address"> 
+		<panel title="Contact Form"> <field name="firstName" /> <field name="lastName" 
+		/> <field name="dateOfBirth" /> <field name="email" /> <field name="phone" 
+		/> <field name="notes" /> </panel> </form> -->
+	<!-- <field name="contact" form-view="contact-form-popup"/> -->
+	<!-- <panel-include view="contact-form-popup" /> -->
+	<!-- <panel-related field="contact" form-view="contact-form-popups"> </panel-related> -->
+
+	<form name="address-form-popup" title="AddressForm"
+		model="com.axelor.address.db.Address">
+		<panel title="Address Form">
+			<field name="name" title="Your Name" />
+			<field name="street" title="Enter Street Name" />
+			<field name="area" title="Enter Area Name" />
+			<field name="city" title="Enter City Name" />
+			<field name="zip" title="Enter Zip Code" />
+			<field name="state" title="Enter State Name" />
+			<field name="country" title="Enter Country Name" />
+			<field name="kanbannumber" title="K.No" />
+			<field name="startDate" title="Enter Stay Date" />
+			<field name="endDate" title="Enter Leave Date" />
+			<field name="priority" title="Set Priority (1-4)" />
+		</panel>
+	</form>
+	<grid model="com.axelor.address.db.Address" title="AddressGrid"
+		editable="true" name="address-grid-popup">
+		<field name="name" title="Your Name" />
+		<field name="street" title="Street Name" />
+		<field name="area" title=" Area Name" />
+		<field name="city" title=" City Name" />
+		<field name="zip" title=" Zip Code" />
+		<field name="state" title=" State Name" />
+		<field name="country" title=" Country Name" />
+		<field name="kanbannumber" title="K.No" />
+		<field name="startDate" title=" Stay Date" />
+		<field name="endDate" title=" Leave Date" />
+		<field name="priority" title=" Priority " />
+	</grid>
+
+	<cards name="address-cards" title="AddressCard"
+		model="com.axelor.address.db.Address" orderBy="name">
+		<field name="name" title="Name" />
+		<field name="street" title="Street Name" />
+		<field name="area" title=" Area Name" />
+		<field name="city" title=" City Name" />
+		<field name="zip" title=" Zip Code" />
+		<field name="state" title=" State Name" />
+		<field name="country" title=" Country Name" />
+		<field name="kanbannumber" title="K.No" />
+		<field name="startDate" title=" Stay Date" />
+		<field name="endDate" title=" Leave Date" />
+		<field name="priority" title=" Priority " />
+		<template><![CDATA[
+		  <div class="span4 card-image">
+		    <strong>{{name}}</strong>
+		  </div>
+		    <div class="card-footer">
+		     <i class='fa fa-free-code-camp'></i>
+		  </div>
+  ]]></template>
+	</cards>
+
+	<selection name="address.number.type">
+		<option value="1">Danger</option>
+		<option value="2">Success</option>
+		<option value="3">Info</option>
+		<option value="4">Warning</option>
+	</selection>
+
+	<kanban name="address-task-kanban" title="Adress Knban"
+		model="com.axelor.address.db.Address" columnBy="kanbannumber"
+		sequenceBy="priority" limit="10">
+		<!-- onNew="address.kanban.on.new" -->
+		<field name="name" title="Name" />
+		<field name="street" title="Street Name" />
+		<field name="area" title=" Area Name" />
+		<field name="city" title=" City Name" />
+		<field name="zip" title=" Zip Code" />
+		<field name="state" title=" State Name" />
+		<field name="country" title=" Country Name" />
+		<field name="kanbannumber" title="K.No" />
+		<field name="startDate" title=" Stay Date" />
+		<field name="endDate" title=" Leave Date" />
+		<field name="priority" title=" Priority " />
+		<hilite color="danger" if="kanbannumber == 0" />
+		<hilite color="success" if="kanbannumber == 1" />
+		<hilite color="info" if="kanbannumber == 2" />
+		<hilite color="warning" if="kanbannumber == 3" />
+		<template><![CDATA[
+			  <h4>{{name}}</h4>
+			  <div class="card-body">{{country}}</div>
+			  <div class="card-footer">
+			    <i class='fa fa-folder-open'></i>
+			  </div>
+  ]]></template>
+	</kanban>
+
+	<!-- <action-record name="address.kanban.on.new" model="com.axelor.project.db.ProjectTask"> 
+		<field name="street" expr="#{_value}" /> <field name="area" expr="#{__user__}" 
+		/> <field name="priority" expr="0" /> </action-record> -->
 
 </object-views>

@@ -7,13 +7,18 @@
   <module name="address" package="com.axelor.address.db" />
 
   <entity name="Address" cacheable="true">
-<!--     <many-to-one name="contact" ref="Contact" required="true" /> -->
+   <!--  <many-to-one name="contact" ref="Contact" required="true" /> -->
+   <string name="name" required="true"></string>
     <string name="street" required="true" max="255" />
     <string name="area" max="255" />
     <string name="city" />
     <string name="zip" />
     <string name="state" />
     <string name="country" />
+    <integer name="kanbannumber" default="1" selection="address.number.type"/>
+    <date name="startDate" />
+    <date name="endDate" />
+    <integer name="priority" min="1" max="4" default="0"/>
   </entity>
 
 </domain-models>
